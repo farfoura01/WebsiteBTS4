@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS Fan Hub</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to BTS Fan Hub</h1>
+  </header>
+
+  <section id="favorite-member">
+    <h2>Select Your Favorite Member</h2>
+    <select id="member-select">
+      <option value="RM">RM</option>
+      <option value="Jin">Jin</option>
+      <option value="Suga">Suga</option>
+      <option value="J-Hope">J-Hope</option>
+      <option value="Jimin">Jimin</option>
+      <option value="V">V</option>
+      <option value="Jungkook">Jungkook</option>
+    </select>
+    <button onclick="createProfile()">Create Profile</button>
+  </section>
+
+  <section id="gallery">
+    <h2>BTS Albums and Photos</h2>
+    <div id="gallery-container">
+      <img src="img6.jpg" alt="Logo">
+      <img src="img7.jpg" alt="Army bomb">
+      <img src="img5.jpg" alt="BTS img">
+    </div>
+  </section>
+
+  <section id="featured-video">
+    <h2>Countdown to the Next BTS Member's Release!</h2>
+    <p>Get excited! Our favorite BTS member will be out soon!</p>
+    <div id="countdown"></div>
+    <script>
+      const countdownDate = new Date("December 31, 2025 12:00:00").getTime();
+
+      const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24* 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "It's time! 🎉";
+        }
+      }, 1000);
+    </script>
+  </section>
+
+  <h2>BTS Image</h2>
+  <img src="img8.jpg" alt="Group Image" width="200" height="400">
+
+  <section id="BTS-video">
+    <h2>Watch BTS Perform Live!</h2>
+	  
+    <iframe width="360" height="315" src="https://www.youtube.com/embed/3cESARetI9U?si=xIu-dm3THGbb2Lui" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  
+  </section>
+
+ <section id="weather">
+    <h2>Current Weather in Seoul</h2>
+    <div id="weather-container">
+        <p id="weather-info">Loading weather...</p>
+    </div>
+</section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
