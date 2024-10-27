@@ -64,21 +64,52 @@
   <h2>BTS Image</h2>
   <img src="img8.jpg" alt="Group Image" width="200" height="400">
 
-  <section id="BTS-video">
-    <h2>Watch BTS Perform Live!</h2>
-	  
-    <iframe width="360" height="315" src="https://www.youtube.com/embed/3cESARetI9U?si=xIu-dm3THGbb2Lui" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  
-  </section>
+ <section id="video-section">
+   <h2>Latest BTS Videos</h2>
+   <iframe 
+      width="360" 
+      height="315" 
+      src="https://www.youtube.com/embed/3cESARetI9U?si=WuI8riwnVJ3TN8tb" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+   </iframe>
+</section>
 
  <section id="weather">
     <h2>Current Weather in Seoul</h2>
     <div id="weather-container">
-        <p id="weather-info">Loading weather...</p>
+        <p id="weather-info">Morning. 74°. </p>
     </div>
 </section>
 
 
   <script src="script.js"></script>
+	
+	<script>
+   const apiKey = 'AIzaSyAHm5X92VsSrBFU3SqLO8Ze0dZIpuNReJQ';
+   const channelId = 'UCLkAepWjdylmXSltofFvsYQ';
+
+   async function fetchVideos() {
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&maxResults=5`);
+      const data = await response.json();
+      const videoSection = document.getElementById('video-section');
+
+      data.items.forEach(video => {
+         const videoFrame = document.createElement('iframe');
+         videoFrame.src = `https://www.youtube.com/embed/${video.id.videoId}`;
+         videoFrame.width = "560";
+         videoFrame.height = "315";
+         videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+         videoFrame.allowFullscreen = true;
+         videoSection.appendChild(videoFrame);
+      });
+   }
+
+   fetchVideos();
+</script>
+
+	
 </body>
 </html>
