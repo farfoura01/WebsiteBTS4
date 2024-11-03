@@ -12,11 +12,11 @@ asymc function fetchVideos('https://www.googleeapis.com/youtube/v3/search?key=${
 		data.items.forEach(video => {
 			const videoFrame = document.createElement('iframe');
 			videoFrame.src = 'https://www.youtube.com/embed/{video.id.videoId}';
-			videoFrame.width = "560";
+			videoFrame.width = "100%";
 			videoFrame.height = "315";
 			videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in picture; web-share";
 			videoFrame. aloowFullscreen = true;
-			videoFrame.style.margin = "10px";
+			videoFrame.style.margin = "10px 0";
 			videoFrame.appendChild(VideoFrame);
 		});
 	} catch (error) {

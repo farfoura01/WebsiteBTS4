@@ -110,23 +110,29 @@ img {
   border-radius: 8px;
 }
 @media (max-width: 600px) {
-  /* Mobile styles */
+  
   #gallery-container img {
     width: 80px;
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-  /* Tablet styles */
+  
   #gallery-container img {
     width: 150px;
   }
 }
 
 @media (min-width: 993px) {
-  /* Desktop styles */
+
   #gallery-container img {
     width: 200px;
   }
 }
 
+#video-section iframe {
+    width: 100%; 
+    height: auto;
+    max-width: 560px; 
+    margin: 10px 0; 
+}
